@@ -48,7 +48,9 @@ public class LineageForest {
     }
 
     private void printLineageForest(){
-
+        for(LineageTree tree : lineageTreeList){
+            tree.printLineageTree();
+        }
     }
 
     private void checkLoops() {
