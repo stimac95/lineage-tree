@@ -10,7 +10,7 @@ public abstract class TreeVisitor {
         walkNodes(tree.getHead());
     }
 
-    private void walkNodes(Node node){
+    public void walkNodes(Node node){
         TreeVisitorResult result = visitNode(node);
         if (result == TreeVisitorResult.END || node.getChildren().isEmpty()) return;
         ArrayList<Node> children = node.getChildren();
