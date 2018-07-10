@@ -10,6 +10,7 @@ import java.util.Optional;
 
 /**
  * This class creates a collection of lineage trees.
+ * The number of trees grows and shrinks depending on the received lineage input
  */
 public class LineageForest {
     private ArrayList<LineageTree> lineageTreeList = new ArrayList<>();
@@ -41,12 +42,18 @@ public class LineageForest {
             if (childTree.get().getHead().equals(new Node(child))){
                 Node childNode = childTree.get().getHead();
                 addResult = parentNode.addChild(childNode);
-                checkForLoops(parentNode, childNode);
+                if (checkForLoops(parentNode, childNode)){
+                    throw new LineageLoopException("Loop detected in lineage for nodes:Parent: " + parentNode.getName()
+                            + " Child: " + childNode.getName());
+                }
                 lineageTreeList.remove(childTree.get());
             } else {
                 Node childNode = childTree.get().getNode(child);
                 addResult = parentNode.addChild(childNode);
-                checkForLoops(parentNode, childNode);
+                if (checkForLoops(parentNode, childNode)){
+                    throw new LineageLoopException("Loop detected in lineage for nodes:Parent: " + parentNode.getName()
+                            + " Child: " + childNode.getName());
+                }
             }
         } else {
             addResult = parentNode.addChild(new Node(child));
@@ -55,18 +62,29 @@ public class LineageForest {
         return addResult;
     }
 
+    /**
+     * Prints all stored lineage trees.
+     */
     public void printLineageForest(){
         for(LineageTree tree : lineageTreeList){
             tree.printLineageTree();
         }
     }
 
-    private void checkForLoops(Node parentNode, Node childNode) throws LineageLoopException {
+    /**
+     * Checks if the loop exists for the given nodes
+     * @param parentNode parentNode
+     * @param childNode childNode
+     */
+    private boolean checkForLoops(Node parentNode, Node childNode) {
         LoopCheckerTreeVisitor lcTreeVisitor = new LoopCheckerTreeVisitor();
-        if (lcTreeVisitor.checkForLoops(parentNode, childNode)){
-            throw new LineageLoopException("Loop detected in lineage");
-        }
+        return lcTreeVisitor.checkForLoops(parentNode, childNode);
     }
+
+    /**
+     * Does DFS for the parent node link starting with the parent nodes children.
+     * If parent node is found by going through the childrens links, then the loop exists.
+     */
     private class LoopCheckerTreeVisitor extends TreeVisitor{
         private Node parentNode;
         private Node childNode;

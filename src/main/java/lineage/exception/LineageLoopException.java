@@ -1,5 +1,8 @@
 package lineage.exception;
 
+/**
+ * Thrown when the loop in the tree lineage is detected.
+ */
 public class LineageLoopException extends Exception {
     public LineageLoopException() {
     }

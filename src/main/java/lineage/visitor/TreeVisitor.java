@@ -4,7 +4,10 @@ import lineage.LineageTree;
 import lineage.Node;
 import java.util.ArrayList;
 
-
+/**
+ * Has function to walk through the tree and call visitNode function for every node.
+ * It Knows how to walk through all the children of the given node
+ */
 public abstract class TreeVisitor {
     public void walkTree(LineageTree tree) {
         walkNodes(tree.getHead());
