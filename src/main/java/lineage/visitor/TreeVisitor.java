@@ -1,11 +1,9 @@
 package lineage.visitor;
 
-import lineage.LineageForest;
 import lineage.LineageTree;
 import lineage.Node;
-
 import java.util.ArrayList;
-import java.util.List;
+
 
 public abstract class TreeVisitor {
     public void walkTree(LineageTree tree) {

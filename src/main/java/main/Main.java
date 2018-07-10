@@ -4,7 +4,6 @@ import lineage.LineageForest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -20,16 +19,19 @@ public class Main {
         inputFilePath = inputFilePath.toAbsolutePath().normalize();
         LineageForest lineage = new LineageForest();
         try (BufferedReader fileReader = Files.newBufferedReader(inputFilePath)){
-            String line = fileReader.readLine();
-            String[] chunks = line.split(" ");
-            if (chunks.length != 2){
-                throw new IllegalArgumentException("Expected line: child parent  received: " + line);
-            } else {
-                lineage.addNode(chunks[1], chunks[0]);
+            String line = null;
+            while ((line = fileReader.readLine()) != null){
+                String[] chunks = line.split(" ");
+                if (chunks.length != 2){
+                    throw new IllegalArgumentException("Expected line: child parent  received: " + line);
+                } else {
+                    lineage.addNode(chunks[1], chunks[0]);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         lineage.printLineageForest();
+
     }
 }
