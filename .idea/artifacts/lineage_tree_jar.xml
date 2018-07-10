@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="lineage-tree:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/lineage_tree_jar</output-path>
+    <root id="archive" name="lineage-tree.jar">
+      <element id="module-output" name="lineage-tree" />
+    </root>
+  </artifact>
+</component>
