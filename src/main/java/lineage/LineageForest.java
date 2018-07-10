@@ -47,7 +47,12 @@ public class LineageForest {
         return addResult;
     }
 
+    private void printLineageForest(){
+
+    }
+
     private void checkLoops() {
+
     }
 
 }

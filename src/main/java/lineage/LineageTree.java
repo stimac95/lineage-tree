@@ -69,5 +69,24 @@ public class LineageTree {
             }
         }
     }
+    public void printLineageTree(){
+        Node node = null;
+        printNodes(node, 0);
+    }
+
+    private void printNodes(Node node, int blanks) {
+        printNode(node, blanks);
+        blanks++;
+        if (node.getChildren().isEmpty()) {
+            return;
+        }
+        for (Node child: node.getChildren()) {
+            printNodes(child, blanks);
+        }
+    }
+
+    private void printNode(Node node, int blanks) {
+        String outputText = String.format("%" + 4*blanks + "s", node.getName());
+    }
 
 }
