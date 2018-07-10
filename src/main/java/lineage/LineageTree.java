@@ -3,9 +3,6 @@ package lineage;
 import lineage.visitor.TreeVisitor;
 import lineage.visitor.TreeVisitorResult;
 
-import java.util.ArrayList;
-import java.util.Objects;
-
 public class LineageTree {
     private Node head;
 
@@ -20,7 +17,17 @@ public class LineageTree {
 
     public boolean addNode(String parent, String child){
         Node parentNode = getNode(parent);
-        return parentNode.addChild(child);
+        Node childNode = getNode(child);
+
+        boolean addSuccess = false;
+        if (parentNode != null){
+            if (childNode != null){
+                addSuccess = parentNode.addChild(childNode);
+            } else {
+                addSuccess = parentNode.addChild(new Node(child));
+            }
+        }
+        return addSuccess;
     }
 
     public Node getNode(String node){
@@ -35,6 +42,9 @@ public class LineageTree {
         } else {
             return false;
         }
+    }
+    public boolean contains(String node){
+        return contains(new Node(node));
     }
 
     public Node getHead() {
