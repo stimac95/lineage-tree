@@ -1,6 +1,7 @@
 package main;
 
 import lineage.LineageForest;
+import lineage.exception.LineageLoopException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,6 +31,9 @@ public class Main {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (LineageLoopException e) {
+            e.printStackTrace();
+            return;
         }
         lineage.printLineageForest();
 
