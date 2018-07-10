@@ -47,7 +47,7 @@ public class LineageForest {
         return addResult;
     }
 
-    private void printLineageForest(){
+    public void printLineageForest(){
         for(LineageTree tree : lineageTreeList){
             tree.printLineageTree();
         }

@@ -85,8 +85,12 @@ public class LineageTree {
     }
 
     private void printNode(Node node, int blanks) {
-        String outputText = String.format("%" + 4*blanks + "s", node.getName());
-        System.out.println(outputText);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < blanks; i++) {
+            sb.append("    ");
+        }
+        sb.append(node.getName());
+        System.out.println(sb.toString());
     }
 
 }
