@@ -28,9 +28,9 @@ Luka
     Leopold  
 	
 -----------------------../doc/lineage2.txt---------------------------------------------  
-lineage.exception.LineageLoopException: Loop detected in lineage for nodes:Parent: Robert Child: Ivan
-	at lineage.LineageForest.addNode(LineageForest.java:47)
-	at main.Main.main(Main.java:29)
+Bad state occured: 
+Loop detected in lineage for nodes: Parent: Robert Child: Ivan
+
 	
 -----------------------../doc/lineage3_2Parents.txt------------------------------------    
 Ivan
@@ -61,6 +61,6 @@ N
     M
 	
 -----------------------../doc/lineage5_loop.txt---------------------------------------	
-lineage.exception.LineageLoopException: Loop detected in lineage for nodes:Parent: D Child: A
-	at lineage.LineageForest.addNode(LineageForest.java:47)
-	at main.Main.main(Main.java:29)
+Bad state occured: 
+Loop detected in lineage for nodes: Parent: D Child: A
+

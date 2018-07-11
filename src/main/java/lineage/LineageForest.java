@@ -1,5 +1,6 @@
 package lineage;
 
+
 import lineage.exception.LineageLoopException;
 import lineage.visitor.TreeVisitor;
 import lineage.visitor.TreeVisitorResult;
@@ -20,6 +21,12 @@ public class LineageForest {
     }
 
     public boolean addNode(String parent, String child) throws LineageLoopException {
+        if (parent == null || child == null){
+            throw new IllegalArgumentException("String variables must not be null");
+        }
+        if (parent.equals(child)){
+            throw new LineageLoopException("Loop detected in lineage. Parent can't be it's own child (" + parent + ")");
+        }
         Optional<LineageTree> parentTree = lineageTreeList.stream()
                                                 .filter((tree) -> tree.contains(parent))
                                                 .findAny();
@@ -29,32 +36,37 @@ public class LineageForest {
         boolean addResult = false;
         Node parentNode;
         LineageTree parentTreeVal = null;
+
         if (parentTree.isPresent()) {
             parentTreeVal = parentTree.get();
             parentNode = parentTreeVal.getNode(parent);
+
         } else {
             parentNode = new Node(parent);
             parentTreeVal = new LineageTree(parentNode);
             lineageTreeList.add(parentTreeVal);
         }
+
         if (childTree.isPresent()){
             // If childNode is the head of childTree merge parentTree and childTree, and delete childTree
             if (childTree.get().getHead().equals(new Node(child))){
                 Node childNode = childTree.get().getHead();
                 addResult = parentNode.addChild(childNode);
                 if (checkForLoops(parentNode, childNode)){
-                    throw new LineageLoopException("Loop detected in lineage for nodes:Parent: " + parentNode.getName()
+                    throw new LineageLoopException("Loop detected in lineage for nodes: Parent: " + parentNode.getName()
                             + " Child: " + childNode.getName());
                 }
                 lineageTreeList.remove(childTree.get());
+
             } else {
                 Node childNode = childTree.get().getNode(child);
                 addResult = parentNode.addChild(childNode);
                 if (checkForLoops(parentNode, childNode)){
-                    throw new LineageLoopException("Loop detected in lineage for nodes:Parent: " + parentNode.getName()
+                    throw new LineageLoopException("Loop detected in lineage for nodes: Parent: " + parentNode.getName()
                             + " Child: " + childNode.getName());
                 }
             }
+
         } else {
             addResult = parentNode.addChild(new Node(child));
         }

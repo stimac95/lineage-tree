@@ -3,6 +3,10 @@ package lineage;
 import lineage.visitor.TreeVisitor;
 import lineage.visitor.TreeVisitorResult;
 
+
+/**
+ * Lineage tree is a tree structure of some lineage.
+ */
 public class LineageTree {
     private Node head;
 
@@ -16,6 +20,10 @@ public class LineageTree {
     }
 
     public boolean addNode(String parent, String child){
+        if (parent == null || child == null){
+            throw new IllegalArgumentException("String variables must not be null");
+        }
+
         Node parentNode = getNode(parent);
         Node childNode = getNode(child);
 
@@ -69,6 +77,7 @@ public class LineageTree {
             }
         }
     }
+
     public void printLineageTree(){
         printNodes(head, 0);
     }

@@ -3,6 +3,11 @@ package lineage;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Represents one node in the lineage tree.
+ * Has two stored variables: name and children nodes
+ * Every node has to have a unique name, otherwise nodes are identified as being equal.
+ */
 public class Node {
     private String name;
     private ArrayList<Node> children;

@@ -32,7 +32,8 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (LineageLoopException e) {
-            e.printStackTrace();
+            System.out.println("Bad state occured:");
+            System.out.println(e.getMessage());
             return;
         }
         lineage.printLineageForest();
