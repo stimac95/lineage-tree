@@ -3,11 +3,14 @@ of the tree is printed first, and then its children and so on.
 
 Application uses Maven to compile and get .jar package.  
 
-1) To compile the application use:  
+0) Clone or download the lineage-tree from master branch.  
+	git clone https://github.com/stimac95/lineage-tree.git  
+
+1) To compile the application position the pointer to project root ( ./lineage-tree/ ):  
 	mvn package  
 	
 2) To run the application:  
-	position yourself to ./lineage-tree/target/  
+	position pointer to ./lineage-tree/target/  
 	java -jar lineage-tree-1.0-SNAPSHOT.jar ../doc/lineage1.txt       # to run lineage1.txt input  
 	
 3) To run tests only:  
