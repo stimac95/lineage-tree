@@ -30,6 +30,7 @@ Luka
 -----------------------../doc/lineage2.txt---------------------------------------------  
 Bad state occured: 
 Loop detected in lineage for nodes: Parent: Robert Child: Ivan
+
 	
 -----------------------../doc/lineage3_2Parents.txt------------------------------------    
 Ivan
