@@ -16,8 +16,10 @@ public abstract class TreeVisitor {
     public void walkNodes(Node node){
         TreeVisitorResult result = visitNode(node);
         if (result == TreeVisitorResult.END || node.getChildren().isEmpty()) return;
+
         ArrayList<Node> children = node.getChildren();
         int size = children.size();
+
         for (int childIndex = 0; childIndex < children.size(); childIndex++){
             walkNodes(children.get(childIndex));
         }

@@ -36,14 +36,17 @@ public class LineageForest {
         boolean addResult = false;
         Node parentNode;
         LineageTree parentTreeVal = null;
+
         if (parentTree.isPresent()) {
             parentTreeVal = parentTree.get();
             parentNode = parentTreeVal.getNode(parent);
+
         } else {
             parentNode = new Node(parent);
             parentTreeVal = new LineageTree(parentNode);
             lineageTreeList.add(parentTreeVal);
         }
+
         if (childTree.isPresent()){
             // If childNode is the head of childTree merge parentTree and childTree, and delete childTree
             if (childTree.get().getHead().equals(new Node(child))){
@@ -54,6 +57,7 @@ public class LineageForest {
                             + " Child: " + childNode.getName());
                 }
                 lineageTreeList.remove(childTree.get());
+
             } else {
                 Node childNode = childTree.get().getNode(child);
                 addResult = parentNode.addChild(childNode);
@@ -62,6 +66,7 @@ public class LineageForest {
                             + " Child: " + childNode.getName());
                 }
             }
+
         } else {
             addResult = parentNode.addChild(new Node(child));
         }

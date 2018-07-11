@@ -23,6 +23,7 @@ public class LineageTree {
         if (parent == null || child == null){
             throw new IllegalArgumentException("String variables must not be null");
         }
+
         Node parentNode = getNode(parent);
         Node childNode = getNode(child);
 
@@ -76,6 +77,7 @@ public class LineageTree {
             }
         }
     }
+
     public void printLineageTree(){
         printNodes(head, 0);
     }
