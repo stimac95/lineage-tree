@@ -1,5 +1,6 @@
 package lineage;
 
+
 import lineage.exception.LineageLoopException;
 import lineage.visitor.TreeVisitor;
 import lineage.visitor.TreeVisitorResult;
@@ -20,6 +21,9 @@ public class LineageForest {
     }
 
     public boolean addNode(String parent, String child) throws LineageLoopException {
+        if (parent == null || child == null){
+            throw new IllegalArgumentException("String variables must not be null");
+        }
         if (parent.equals(child)){
             throw new LineageLoopException("Loop detected in lineage. Parent can't be it's own child (" + parent + ")");
         }

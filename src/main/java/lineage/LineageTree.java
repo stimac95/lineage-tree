@@ -20,6 +20,9 @@ public class LineageTree {
     }
 
     public boolean addNode(String parent, String child){
+        if (parent == null || child == null){
+            throw new IllegalArgumentException("String variables must not be null");
+        }
         Node parentNode = getNode(parent);
         Node childNode = getNode(child);
 
