@@ -43,7 +43,7 @@ public class LineageForest {
                 Node childNode = childTree.get().getHead();
                 addResult = parentNode.addChild(childNode);
                 if (checkForLoops(parentNode, childNode)){
-                    throw new LineageLoopException("Loop detected in lineage for nodes:Parent: " + parentNode.getName()
+                    throw new LineageLoopException("Loop detected in lineage for nodes: Parent: " + parentNode.getName()
                             + " Child: " + childNode.getName());
                 }
                 lineageTreeList.remove(childTree.get());
@@ -51,7 +51,7 @@ public class LineageForest {
                 Node childNode = childTree.get().getNode(child);
                 addResult = parentNode.addChild(childNode);
                 if (checkForLoops(parentNode, childNode)){
-                    throw new LineageLoopException("Loop detected in lineage for nodes:Parent: " + parentNode.getName()
+                    throw new LineageLoopException("Loop detected in lineage for nodes: Parent: " + parentNode.getName()
                             + " Child: " + childNode.getName());
                 }
             }
