@@ -20,6 +20,9 @@ public class LineageForest {
     }
 
     public boolean addNode(String parent, String child) throws LineageLoopException {
+        if (parent.equals(child)){
+            throw new LineageLoopException("Loop detected in lineage. Parent can't be it's own child (" + parent + ")");
+        }
         Optional<LineageTree> parentTree = lineageTreeList.stream()
                                                 .filter((tree) -> tree.contains(parent))
                                                 .findAny();

@@ -3,6 +3,10 @@ package lineage;
 import lineage.visitor.TreeVisitor;
 import lineage.visitor.TreeVisitorResult;
 
+
+/**
+ * Lineage tree is a tree structure of some lineage.
+ */
 public class LineageTree {
     private Node head;
 
