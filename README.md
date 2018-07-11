@@ -14,8 +14,8 @@ Application uses Maven to compile and get .jar package.
 	mvn clean test  
 
 ----------------------Example Outputs:------------------------------------------------  
-WARNING: Github doesn't store the proper formatting of this file.
-To see the proper output open this file in text editor.
+WARNING: Github doesn't store the proper formatting of this file.  
+To see the proper output open this file in text editor.  
 java -jar lineage-tree-1.0-SNAPSHOT.jar ../doc/lineage1.txt  
 ----------------------../doc/lineage1.txt---------------------------------------------  
 Ivan  
